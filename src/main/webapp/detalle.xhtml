@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui">
+<h:head>
+    <title>Detalle del curso</title>
+</h:head>
+<h:body>
+  <b:container>
+    <b:row>
+      <b:column>
+    <h1>Detalle del curso</h1>
+
+    <p>Id recibido en la URL: <strong><h:outputText value="#{param.id}"/></strong></p>
+
+    <!-- Si el id existe, mostramos los datos -->
+    <h:panelGroup rendered="#{not empty cursoBean.buscar(param.id)}">
+        <p><strong>Curso:</strong> <h:outputText value="#{cursoBean.buscar(param.id).nombre}"/></p>
+        <p><strong>Docente:</strong> <h:outputText value="#{cursoBean.buscar(param.id).docente}"/></p>
+        <p><strong>Creditos:</strong> <h:outputText value="#{cursoBean.buscar(param.id).creditos}"/></p>
+        <p><strong>Vacantes:</strong> <h:outputText value="#{cursoBean.buscar(param.id).vacantes}"/></p>
+        <p><strong>Estado:</strong> <b:label value="#{cursoBean.buscar(param.id).estadoCalculado}"/></p>
+    </h:panelGroup>
+
+    <!-- Pregunta guia de la diapositiva 10: id inexistente -->
+    <h:panelGroup rendered="#{empty cursoBean.buscar(param.id)}">
+        <p class="error">El curso solicitado no existe.</p>
+    </h:panelGroup>
+
+    <p><b:button value="Volver al listado" outcome="listado" look="primary"/></p>
+      </b:column>
+    </b:row>
+  </b:container>
+</h:body>
+</html>

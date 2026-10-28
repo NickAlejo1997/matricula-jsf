@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui">
+<h:head>
+    <title>Cursos disponibles</title>
+</h:head>
+<h:body>
+    <b:container>
+        <b:row>
+            <b:column>
+                <h1>Cursos disponibles</h1>
+
+                <b:dataTable value="#{cursoBean.cursos}" var="c" responsive="true">
+                    <b:dataTableColumn label="Curso" value="#{c.nombre}"/>
+                    <b:dataTableColumn label="Docente" value="#{c.docente}"/>
+                    <b:dataTableColumn label="Créditos" value="#{c.creditos}"/>
+                    <b:dataTableColumn label="Vacantes" value="#{c.vacantes}"/>
+
+                    <b:dataTableColumn label="Estado">
+                        <b:label value="#{c.estadoCalculado}"
+                                 severity="#{c.vacantes gt 0 ? 'success' : 'danger'}"/>
+                    </b:dataTableColumn>
+
+                    <!-- Diapositiva 10: enlace por fila + parametro id en la URL -->
+                    <b:dataTableColumn label="Detalle">
+                        <h:link outcome="detalle" value="Ver">
+                            <f:param name="id" value="#{c.id}"/>
+                        </h:link>
+                    </b:dataTableColumn>
+                </b:dataTable>
+
+                <p>
+                    <b:button value="Volver al inicio" outcome="index" look="default"/>
+                </p>
+            </b:column>
+        </b:row>
+    </b:container>
+</h:body>
+</html>

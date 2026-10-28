@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+>
+<h:head>
+    <title>Matricula - Inicio</title>
+    <h:outputStylesheet name="estilos.css" library="css"/>
+</h:head>
+<h:body>
+    <h1>Sistema de matricula</h1>
+    <p>Desarrollo Web Integrado - Semana 11</p>
+
+    <h:form>
+        <!-- Navegacion IMPLICITA: el outcome "listado" abre listado.xhtml -->
+        <h:commandButton value="Ver cursos" action="listado?faces-redirect=true"/>
+        <!-- Navegacion EXPLICITA: la logica esta en MatriculaBean + faces-config.xml -->
+        <h:commandButton value="Matricularme" action="matricula"/>
+    </h:form>
+</h:body>
+</html>

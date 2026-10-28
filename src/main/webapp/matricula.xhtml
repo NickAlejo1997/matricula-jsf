@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <title>Formulario de matricula</title>
+    <h:outputStylesheet name="estilos.css" library="css"/>
+</h:head>
+<h:body>
+    <h1>Formulario de matricula</h1>
+
+    <h:messages styleClass="error"/>
+
+    <h:form>
+        <p>
+            <h:outputLabel for="codigo" value="Codigo:"/>
+            <h:inputText id="codigo" value="#{matriculaBean.codigo}">
+                <f:validateLength minimum="5" maximum="10"/>
+            </h:inputText>
+        </p>
+        <p>
+            <h:outputLabel for="nombre" value="Nombre:"/>
+            <h:inputText id="nombre" value="#{matriculaBean.nombre}"/>
+        </p>
+
+        <!-- action devuelve un outcome: "exito" o "error" (ver faces-config.xml) -->
+        <h:commandButton value="Enviar" action="#{matriculaBean.guardar}"/>
+    </h:form>
+
+    <p><h:outputLink value="index.xhtml">Volver al inicio</h:outputLink></p>
+</h:body>
+</html>
